@@ -29,16 +29,32 @@ async function loadImageData(img) {
     });
 }
 
-// Draw Bounding Boxes (if face detection was working)
+// Draw Bounding Boxes (Scaled to Displayed Image)
 function drawBoundingBoxes(faces) {
     const canvas = document.getElementById("face-overlay");
+    const image = document.getElementById("uploaded-image");
     const ctx = canvas.getContext("2d");
+
+    // Resize canvas to match displayed image dimensions
+    canvas.width = image.clientWidth;
+    canvas.height = image.clientHeight;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "red";
     ctx.lineWidth = 2;
 
+    // Scale factor (Original vs Displayed size)
+    const scaleX = canvas.width / image.naturalWidth;
+    const scaleY = canvas.height / image.naturalHeight;
+
+    // Draw each bounding box with scaling
     faces.forEach(face => {
-        ctx.strokeRect(face.x, face.y, face.width, face.height);
+        ctx.strokeRect(
+            face.x * scaleX,
+            face.y * scaleY,
+            face.width * scaleX,
+            face.height * scaleY
+        );
     });
 }
 
