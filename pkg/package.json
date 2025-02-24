@@ -1,0 +1,15 @@
+{
+  "name": "wasm-face-rec",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "wasm_face_rec_bg.wasm",
+    "wasm_face_rec.js",
+    "wasm_face_rec.d.ts"
+  ],
+  "main": "wasm_face_rec.js",
+  "types": "wasm_face_rec.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
