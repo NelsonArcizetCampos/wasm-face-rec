@@ -1,1 +1,3 @@
 /target
+*.js.map
+Cargo.lock
