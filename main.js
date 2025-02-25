@@ -12,7 +12,7 @@ async function handleFile(event) {
         const imageData = await loadImageData(img);
 
         // Call WASM function (currently returns dummy data)
-        const faces = detect_faces(imageData.data, img.width, img.height);  
+        const faces = detect_faces(imageData.data, img.width, img.height);
         drawBoundingBoxes(faces);
     };
 }
